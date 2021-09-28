@@ -15,15 +15,17 @@ def sortBurbuja(L):
         para ordenar la lista L
     '''
     flag = False 
+    cycles = 0
     while flag == False:
         flag = True 
         for i in range(len(L)-1): 
+            cycles += 1
             if L[i] > L[i +1]:
                 aux = L[i]
                 L[i] = L[i+1]
                 L[i+1]= aux
                 flag = False 
-    return 
+    return L, cycles
 
 
 def sortSeleccion(L):
@@ -59,7 +61,10 @@ def createRandomList(size, minimo, maximo):
         minimo: número mínimo que puede haber en la lista
         maximo: número máximo que puede haber en la lista
     '''
-    random.randint(minimo,maximo)
+    lista = []
+    for i in range(size):
+        lista.append(random.randint(minimo, maximo))
+    return lista
     
 
 

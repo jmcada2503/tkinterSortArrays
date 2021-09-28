@@ -74,9 +74,7 @@ def generarLista():
     Tener en cuenta posibles errores de usuario (ingreso de letras, por ejemplo)
     '''
     
-    print(minimo)
-    print(maximo)
-    L_sin_ordenar = createRandomList(nMuestras, minimo, maximo)
+    L_sin_ordenar = createRandomList(int(nMuestras.get()), int(minimo.get()), int(maximo.get()))
     x_axis = range(1,len(L_sin_ordenar)+1)        
     graficaDatos.clear()
     graficaDatos.stem(x_axis, L_sin_ordenar, use_line_collection=True)
@@ -150,7 +148,7 @@ def sortHandler():
         if selPaso.get() == 1:
             animacionBurbuja()
         ''' Tomar medida inicial de tiempo '''
-        cycles = sortBurbuja(L_burbuja)
+        L_burbuja, cycles = sortBurbuja(L_burbuja)
         ''' Tomar medida final de tiempo
             Calcular tiempo de ejecución (t_elapsed)'''
         graficaDatos.stem(abscisas, L_burbuja, use_line_collection=True)
@@ -171,6 +169,7 @@ def sortHandler():
         cycles = 'No disponible'
         graficaDatos.stem(abscisas, L_py, use_line_collection=True)
         
+    t_elapsed = 0
     print('Time in us: ', t_elapsed)
     print('Algorithm iterations: ', cycles)    
         
