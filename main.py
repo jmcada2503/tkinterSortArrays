@@ -159,7 +159,7 @@ def sortHandler():
             animacionSeleccion()
         ''' Tomar medida inicial de tiempo '''
         start_time = time.time()
-        cycles = sortSeleccion(L_seleccion)
+        L_seleccion, cycles = sortSeleccion(L_seleccion)
         end_time = time.time()
         ''' Tomar medida final de tiempo
             Calcular tiempo de ejecución (t_elapsed)'''

@@ -36,9 +36,11 @@ def sortSeleccion(L):
         para ordenar la lista L
     '''
     lenght  = len  (L)
+    cycles = 0
     for i in range(lenght-1):
         less= i
         for j in range(i+1,lenght):
+            cycles += 1
             if L[j] < L[less]:
                 less = j
                 
@@ -46,7 +48,7 @@ def sortSeleccion(L):
         L[less] = L[i]
         L[i] = aux
 
-    return 
+    return L, cycles
 
 
 
