@@ -88,9 +88,9 @@ def loadInputData():
 	
     if source_selection.get() == 1:
         # Ventana para la seleccion del archivo
-        fname = askopenfilename()        
+        fname = askopenfilename()
         L_sin_ordenar = loadFromFile(fname)
-        x_axis = range(1,len(L_sin_ordenar)+1)        
+        x_axis = range(1,len(L_sin_ordenar)+1)
         graficaDatos.clear()
         graficaDatos.stem(x_axis, L_sin_ordenar, use_line_collection=True)
         graficaDatos.grid()

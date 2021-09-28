@@ -1,11 +1,17 @@
 import random 
 def loadFromFile(name):
+    f = open(name, "r")
+    data = f.readlines()
+    f.close()
+
+    for i in range(len(data)):
+        data[i] = float(data[i])
     ''' 
         Recibe el nombre de un archivo (str)
         Retorna una lista de floats con cada uno 
         de los números extraídos del archivo name
     '''
-    pass
+    return data
 
 def sortBurbuja(L):
     ''' 
