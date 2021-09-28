@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter.ttk import Separator
 from tkinter.filedialog import askopenfilename 
 from time import *
+import time
 
 # Funciones de matplotlib para graficar datos
 import matplotlib.pyplot as plt
@@ -14,54 +15,52 @@ from sortfunc import *
 
 L_sin_ordenar=[]
 # Metodos de ordenamiento
-def animacionBurbuja():    
-    global graficaDatos, L_sin_ordenar
+def animacionBurbuja():
+    global graficaDatos, L_sin_ordenar, canvas
     L = L_sin_ordenar.copy()
     abscisas = range(1,len(L)+1)
-    '''
-    Ciclo externo:
-        ...
-        Ciclo interno:
-            ...
-        Fin ciclo interno
-        ...
-    '''
-    '''
-        # Actualización de la gráfica
-        # (Descomentar una vez se haya implementado
-        # la función de selección)
+    flag = False 
+    cycles = 0
+    while flag == False:
+        flag = True 
+        for i in range(len(L)-1): 
+            cycles += 1
+            if L[i] > L[i +1]:
+                aux = L[i]
+                L[i] = L[i+1]
+                L[i+1]= aux
+                flag = False 
         graficaDatos.clear()
-        plt.pause(0.2)
-        graficaDatos.stem(abscisas, L, use_line_collection = True)
-        graficaDatos.grid() # Grid on
-        canvas.draw()        
-    '''    
-    '''Fin ciclo externo'''
+        time.sleep(0.2)
+        graficaDatos.stem(abscisas, L, use_line_collection=True)
+        graficaDatos.grid()        
+        canvas.draw()
+        root.update()
+    
 
 def animacionSeleccion():
     global graficaDatos, L_sin_ordenar
     L = L_sin_ordenar.copy()
     abscisas = range(1,len(L)+1)
-    '''
-    Ciclo externo:
-        ...
-        Ciclo interno:
-            ...
-        Fin ciclo interno
-        ...
-    '''
-    
-    '''
-        # Actualización de la gráfica
-        # (Descomentar una vez se haya implementado
-        # la función de selección)
+    lenght  = len  (L)
+    cycles = 0
+    for i in range(lenght-1):
+        less= i
+        for j in range(i+1,lenght):
+            cycles += 1
+            if L[j] < L[less]:
+                less = j
+                
+        aux = L[less]
+        L[less] = L[i]
+        L[i] = aux
+
         graficaDatos.clear()
-        plt.pause(0.2)
+        time.sleep(0.2)
         graficaDatos.stem(abscisas, L, use_line_collection=True)
         graficaDatos.grid()        
         canvas.draw()
-    '''
-    '''Fin ciclo externo'''
+        root.update()
         
 # Funciones handler
 
