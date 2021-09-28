@@ -148,7 +148,9 @@ def sortHandler():
         if selPaso.get() == 1:
             animacionBurbuja()
         ''' Tomar medida inicial de tiempo '''
+        start_time = time.time()
         L_burbuja, cycles = sortBurbuja(L_burbuja)
+        end_time = time.time()
         ''' Tomar medida final de tiempo
             Calcular tiempo de ejecución (t_elapsed)'''
         graficaDatos.stem(abscisas, L_burbuja, use_line_collection=True)
@@ -156,20 +158,24 @@ def sortHandler():
         if selPaso.get() == 1:
             animacionSeleccion()
         ''' Tomar medida inicial de tiempo '''
+        start_time = time.time()
         cycles = sortSeleccion(L_seleccion)
+        end_time = time.time()
         ''' Tomar medida final de tiempo
             Calcular tiempo de ejecución (t_elapsed)'''
         graficaDatos.stem(abscisas, L_seleccion, use_line_collection=True)
     elif met.get() == 3:
         ''' Tomar medida inicial de tiempo '''
         ''' Aplicar método sort de Python a L_py '''
+        start_time = time.time()
         L_py.sort()
+        end_time = time.time()
         ''' Tomar medida final de tiempo
             Calcular tiempo de ejecución (t_elapsed)'''
         cycles = 'No disponible'
         graficaDatos.stem(abscisas, L_py, use_line_collection=True)
         
-    t_elapsed = 0
+    t_elapsed = end_time-start_time
     print('Time in us: ', t_elapsed)
     print('Algorithm iterations: ', cycles)    
         
